@@ -1,1 +1,16 @@
+version: "3"
 
+services:
+    nginx_rp:
+        build: nginx_rp
+        image: img_nginx_rp
+        container_name: nginx_rp1
+        volumes:
+            - vol_letsencrypt:/etc/letsencrypt
+        ports:
+            - "80:80"
+            - "443:443"
+
+volumes:
+    vol_letsencrypt:
+        external: true
