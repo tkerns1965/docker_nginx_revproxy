@@ -1,15 +1,19 @@
 version: "3"
 
 services:
-    nginx_rp:
-        build: nginx_rp
-        image: img_nginx_rp
-        container_name: nginx_rp1
+    nginx:
+        build: nginx
+        image: nginx_revproxy
+        container_name: nginx_revproxy1
         volumes:
-            - vol_letsencrypt:/etc/letsencrypt
+            - letsencrypt:/etc/letsencrypt
         ports:
             - "80:80"
             - "443:443"
+        environment:
+            - CERTBOT_EMAIL=${CERTBOT_EMAIL}
+            - CERTBOT_WEBROOT=${CERTBOT_WEBROOT}
+            - CERTBOT_DOMAIN=${CERTBOT_DOMAIN}
 
 volumes:
     vol_letsencrypt:
