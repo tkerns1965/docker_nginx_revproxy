@@ -27,7 +27,3 @@ services:
         build: web2
         image: apache_web
         container_name: apache_web1
-
-# volumes:
-#     letsencrypt:
-#         external: true
