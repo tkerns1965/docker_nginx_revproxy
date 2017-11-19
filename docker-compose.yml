@@ -16,5 +16,5 @@ services:
             - CERTBOT_DOMAIN=${CERTBOT_DOMAIN}
 
 volumes:
-    vol_letsencrypt:
+    letsencrypt:
         external: true
