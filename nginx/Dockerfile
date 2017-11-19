@@ -8,6 +8,7 @@ RUN apk update && \
 
 COPY s6 /s6
 COPY crontab_certbot /root/
+COPY *.conf /etc/nginx/conf.d/
 
 RUN (crontab -l ; cat /root/crontab_certbot) | crontab -
 
