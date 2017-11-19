@@ -7,6 +7,9 @@ services:
         container_name: nginx_revproxy1
         volumes:
             - letsencrypt:/etc/letsencrypt
+        depends_on:
+            - web1
+            - web2
         ports:
             - "80:80"
             - "443:443"
