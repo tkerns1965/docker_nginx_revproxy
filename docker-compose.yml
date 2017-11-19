@@ -15,6 +15,16 @@ services:
             - CERTBOT_WEBROOT=${CERTBOT_WEBROOT}
             - CERTBOT_DOMAIN=${CERTBOT_DOMAIN}
 
+    web1:
+        build: web1
+        image: nginx_web
+        container_name: nginx_web1
+
+    web2:
+        build: web2
+        image: apache_web
+        container_name: apache_web1
+
 volumes:
     letsencrypt:
         external: true
