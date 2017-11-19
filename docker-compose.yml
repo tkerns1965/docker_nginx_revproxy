@@ -6,7 +6,7 @@ services:
         image: nginx_revproxy
         container_name: nginx_revproxy1
         volumes:
-            - letsencrypt:/etc/letsencrypt
+            - ../docker_volumes/letsencrypt:/etc/letsencrypt
         depends_on:
             - web1
             - web2
@@ -28,6 +28,6 @@ services:
         image: apache_web
         container_name: apache_web1
 
-volumes:
-    letsencrypt:
-        external: true
+# volumes:
+#     letsencrypt:
+#         external: true
