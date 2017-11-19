@@ -5,3 +5,10 @@ RUN apk update && \
     mkdir /var/log/s6 && \
     mkdir /var/log/s6/cron && \
     mkdir /var/log/s6/nginx
+
+COPY s6 /s6
+COPY crontab_certbot /root/
+
+RUN (crontab -l ; cat /root/crontab_certbot) | crontab -
+
+CMD ["s6-svscan", "/s6"]
