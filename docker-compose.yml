@@ -1,8 +1,8 @@
 version: "3"
 
 services:
-    nginx:
-        build: nginx
+    revproxy:
+        build: revproxy
         image: nginx_rp
         container_name: nginx_rp1
         volumes:
