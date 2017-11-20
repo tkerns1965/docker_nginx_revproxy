@@ -3,8 +3,8 @@ version: "3"
 services:
     nginx:
         build: nginx
-        image: nginx_revproxy
-        container_name: nginx_revproxy1
+        image: nginx_rp
+        container_name: nginx_rp1
         volumes:
             - ../docker_volumes/letsencrypt:/etc/letsencrypt
         depends_on:
