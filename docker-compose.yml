@@ -2,14 +2,14 @@ version: "3"
 
 services:
     revproxy:
-        build: revproxy
+        build:
+            context: revproxy
+            args:
+                - NGINX_VERSION=1.13.7-alpine
         image: nginx_rp
         container_name: nginx_rp1
         volumes:
             - /srv/docker_volumes/letsencrypt:/etc/letsencrypt
-        depends_on:
-            - web1
-            - web2
         ports:
             - "80:80"
             - "443:443"
@@ -17,13 +17,22 @@ services:
             - CERTBOT_EMAIL=${CERTBOT_EMAIL}
             - CERTBOT_WEBROOT=${CERTBOT_WEBROOT}
             - CERTBOT_DOMAIN=${CERTBOT_DOMAIN}
+        depends_on:
+            - web1
+            - web2
 
     web1:
-        build: web1
+        build:
+            context: web1
+            args:
+                - NGINX_VERSION=1.13.7-alpine
         image: nginx_web
         container_name: nginx_web1
 
     web2:
-        build: web2
+        build:
+            context: web2
+            args:
+                - APACHE_VERSION=2.4.29-alpine
         image: apache_web
         container_name: apache_web1
