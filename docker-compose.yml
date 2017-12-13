@@ -6,7 +6,7 @@ services:
         image: nginx_rp
         container_name: nginx_rp1
         volumes:
-            - ../docker_volumes/letsencrypt:/etc/letsencrypt
+            - /srv/docker_volumes/letsencrypt:/etc/letsencrypt
         depends_on:
             - web1
             - web2
