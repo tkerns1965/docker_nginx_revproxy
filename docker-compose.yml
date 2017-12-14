@@ -6,6 +6,7 @@ services:
             context: revproxy
             args:
                 - NGINX_VERSION=1.13.7-alpine
+                - NGINX_DOMAIN=${NGINX_DOMAIN}
         image: nginx_rp
         container_name: nginx_rp1
         volumes:
@@ -13,8 +14,8 @@ services:
         ports:
             - "80:80"
             - "443:443"
-        environment:
-            - NGINX_DOMAIN=${NGINX_DOMAIN}
+        # environment:
+        #     - NGINX_DOMAIN=${NGINX_DOMAIN}
         depends_on:
             - web1
             - web2
