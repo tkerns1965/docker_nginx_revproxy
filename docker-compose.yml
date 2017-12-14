@@ -14,7 +14,7 @@ services:
             - "80:80"
             - "443:443"
         environment:
-            - NGINX_DOMAIN=${CERTBOT_DOMAIN}
+            - NGINX_DOMAIN=${NGINX_DOMAIN}
         depends_on:
             - web1
             - web2
