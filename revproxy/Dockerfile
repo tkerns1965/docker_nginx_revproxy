@@ -8,10 +8,11 @@ RUN apk update && \
 
 COPY s6 /etc/s6
 COPY *.conf /etc/nginx/conf.d/
-# COPY *.html /usr/share/nginx/html/
+COPY revproxy.html /usr/share/nginx/html/
 
 COPY crontab_certbot /root/
 RUN (crontab -l ; cat /root/crontab_certbot) | crontab - && \
-    rm /root/crontab_certbot
+    rm /root/crontab_certbot && \
+    sed -i 's/index.html index.htm/revproxy.html/' /etc/nginx/conf.d/default.conf
 
 CMD ["s6-svscan", "/etc/s6"]
