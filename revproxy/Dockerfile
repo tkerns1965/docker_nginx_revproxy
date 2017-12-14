@@ -13,6 +13,8 @@ COPY revproxy.html /usr/share/nginx/html/
 COPY crontab_certbot /root/
 RUN (crontab -l ; cat /root/crontab_certbot) | crontab - && \
     rm /root/crontab_certbot && \
-    sed -i 's/index.html index.htm/revproxy.html/' /etc/nginx/conf.d/default.conf
+    sed -i 's/index.html index.htm/revproxy.html/' /etc/nginx/conf.d/default.conf && \
+    sed -i 's/%_WEB1_%//' /etc/nginx/conf.d/default.conf && \
+    sed -i 's/%_WEB2_%//' /etc/nginx/conf.d/default.conf
 
 CMD ["s6-svscan", "/etc/s6"]
