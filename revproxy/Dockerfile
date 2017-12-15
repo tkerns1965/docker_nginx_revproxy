@@ -17,6 +17,6 @@ RUN (crontab -l ; cat /root/crontab_certbot) | crontab - && \
     rm /root/crontab_certbot && \
     sed -i 's/index.html index.htm/revproxy.html/' /etc/nginx/conf.d/default.conf && \
     sed -i "s/%_WEB1_%/web1.${NGINX_DOMAIN}/" /etc/nginx/conf.d/web1.conf && \
-    sed -i 's/%_WEB2_%/xweb2.${NGINX_DOMAIN}/' /etc/nginx/conf.d/web2.conf
+    sed -i 's/%_WEB2_%/web2.${NGINX_DOMAIN}/' /etc/nginx/conf.d/web2.conf
 
 CMD ["s6-svscan", "/etc/s6"]
