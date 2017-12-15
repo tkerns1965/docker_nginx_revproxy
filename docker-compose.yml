@@ -19,7 +19,7 @@ services:
         depends_on:
             - web1
             - web2
-        restart: unless-stopped
+        restart: always
 
     web1:
         build:
